@@ -1,0 +1,41 @@
+Notes:
+1) You have to write this lengthy code to fetch data normally, using useEffect, etc.
+2) Apollo Client has other benefits like caching the data, etc to make your website run faster. Plus it provides you data, loading and error for user guide. Also provides a method for performing a function automatically after performing query or mutation.
+3) This is the normal method:
+
+  const [messages, setMessages] = useState([]);
+
+  const getMessages = async () => {
+    const response = await fetch("http://localhost:4000/", {
+      // Method will always be POST, no matter if we're getting or sending data
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1NzE0MjIxMn0.QzooCCmi1TmG9t6r7E_aq7r2Ei_nYSyRGXM3kRWcBq4",
+      },
+      body: JSON.stringify({
+        // It will always be query, doesn't matter if you are performing a query/mutation
+        query: `
+        query MessagesByUser($receiverId: Int!) {
+          messagesByUser(receiverId: $receiverId) {
+            text
+            receiverId
+            senderId
+            id
+          }
+        }
+        `,
+        variables: {
+          receiverId: 4,
+        },
+      }),
+    });
+    const responseData = await response.json();
+    console.log(responseData);
+    // Set your state here
+  };
+
+  useEffect(() => {
+    getMessages();
+  }, []);
