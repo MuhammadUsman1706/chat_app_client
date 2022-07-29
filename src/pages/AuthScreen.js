@@ -9,7 +9,7 @@ import {
   CircularProgress,
   Alert,
 } from "@mui/material";
-import { useMutation } from "@apollo/client/react";
+import { useMutation } from "@apollo/client";
 import { LOGIN_USER, SIGNUP_USER } from "../graphql/mutations";
 import AuthContext from "../store/auth-context";
 

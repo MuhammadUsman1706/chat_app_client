@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Box } from "@mui/material";
 import SideBar from "../components/SideBar";
