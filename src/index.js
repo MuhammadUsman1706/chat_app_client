@@ -49,7 +49,7 @@ const httpLink = new HttpLink({
 const wsLink = new GraphQLWsLink(
   // ws is fine for local host, but have to write ws's' like http's' here for a secure connection. Otherwise heroku ignore the request.
   createClient({
-    url: "ws://graphql-chatapplication.herokuapp.com/graphql",
+    url: "wss://graphql-chatapplication.herokuapp.com/graphql",
   })
 );
 
